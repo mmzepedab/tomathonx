@@ -11,6 +11,7 @@ public:
 
     virtual bool init();
     
+    
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
@@ -18,7 +19,16 @@ public:
     CREATE_FUNC(HelloWorld);
     
     void onHttpRequestCompleted( cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response );
+    
+    void updateTimer(float dt);
+    
+protected:
+    cocos2d::Label* _label;
+    int _score;
+    
 };
+
+
 
 
 

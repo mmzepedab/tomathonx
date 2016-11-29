@@ -1,11 +1,19 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 
+#include "ui/CocosGUI.h"
+
 #include <vector>
+
+#include <sstream>
+#include <string>
+#include <iostream>
 
 USING_NS_CC;
 
 using namespace std;
+
+
 
 Scene* HelloWorld::createScene()
 {
@@ -31,6 +39,9 @@ bool HelloWorld::init()
     {
         return false;
     }
+    
+    this->schedule(schedule_selector(HelloWorld::updateTimer),1.0f);
+    
     
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -59,14 +70,15 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    
+    _score = 60;
+    _label = Label::createWithTTF(std::to_string(_score), "fonts/Marker Felt.ttf", 24);
+    //_label->setString("No");
     // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
+    _label->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height - _label->getContentSize().height));
 
     // add the label as a child to this layer
-    this->addChild(label, 1);
+    this->addChild(_label, 1);
 
     // add "HelloWorld" splash screen"
     auto sprite = Sprite::create("HelloWorld.png");
@@ -75,9 +87,37 @@ bool HelloWorld::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    //this->addChild(sprite, 0);
     
-    MessageBox("Congrats on completing the game!", "Victory");
+    auto button = cocos2d::ui::Button::create("Button.png", "ButtonYellow.png", "ButtonYellow.png");
+    
+    button->setTitleText("Salta");
+    button->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height/2 ));
+    
+    button->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type){
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                printf("Button 1 clicked");
+                _score++;
+                
+                _label->setString(std::to_string(_score));
+                //_label->setString("Nel");
+                
+                
+                //[label setString: [NSString stringWithFormat:@"%d",score]];
+                //MessageBox("Congrats on completing the game!", "Victory");
+                break;
+            default:
+                break;
+        }
+    });
+    
+    this->addChild(button);
+    
     
     cocos2d::network::HttpRequest *request = new cocos2d::network::HttpRequest( );
     std::vector<std::string> headers;
@@ -90,7 +130,7 @@ bool HelloWorld::init()
     
     std::string postData = "{\"username\": \"mmzepedab2\", \"first_name\": \"mmzepedab\", \"last_name\": \"mmzepedab\", \"highest_score\": \"mmzepedab\", \"points\": \"mmzepedab\", \"email\": \"mmzepedab\", \"facebook_id\": \"mmzepedab\"}";
     request->setRequestData( postData.c_str(), postData.length() );
-    cocos2d::network::HttpClient::getInstance()->send( request );
+    //cocos2d::network::HttpClient::getInstance()->send( request );
     request->release( );
     
     return true;
@@ -138,4 +178,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
     
     
+}
+
+void HelloWorld::updateTimer(float dt)
+{
+    _score--;
+    _label->setString(std::to_string(_score));
 }
