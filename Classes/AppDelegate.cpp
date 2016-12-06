@@ -34,6 +34,10 @@ static int register_all_packages()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+    
+    
+    initMultiResolution();
+    
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -80,6 +84,40 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->runWithScene(scene);
 
     return true;
+}
+
+void AppDelegate::initMultiResolution()
+{
+    auto director = Director::getInstance();
+    auto glview = director->getOpenGLView();
+    
+    glview->setDesignResolutionSize(
+                                    designResolutionSize.width,
+                                    designResolutionSize.height,
+                                    ResolutionPolicy::NO_BORDER
+                                    );
+    std::vector<std::string> searchPaths;
+    float scaleFactor = 1.0f;
+    Size frameSize = glview->getFrameSize();
+    
+    if (frameSize.height > mediumResolutionSize.height)
+    {
+        searchPaths.push_back("res/HDR");
+        scaleFactor = largeResolutionSize.height/designResolutionSize.height;
+    }
+    else if (frameSize.height > smallResolutionSize.height)
+    {
+        searchPaths.push_back("res/HD");
+        scaleFactor = mediumResolutionSize.height/designResolutionSize.height;
+    }
+    else
+    {
+        searchPaths.push_back("res/SD");
+        scaleFactor = smallResolutionSize.height/designResolutionSize.height;
+    }
+    
+    director->setContentScaleFactor(scaleFactor);
+    FileUtils::getInstance()->setSearchPaths(searchPaths);
 }
 
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.

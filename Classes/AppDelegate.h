@@ -23,6 +23,8 @@ public:
     */
     virtual bool applicationDidFinishLaunching();
 
+    virtual void initMultiResolution();
+    
     /**
     @brief  Called when the application moves to the background
     @param  the pointer of the application
