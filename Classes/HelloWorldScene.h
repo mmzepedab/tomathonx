@@ -22,9 +22,18 @@ public:
     
     void updateTimer(float dt);
     
+    void addBackground();
+    
+    void spawnEnemies(float dt);
+    void* createExplotion(cocos2d::Vec2 position);
+    
+    void OnAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event);
+    
 protected:
     cocos2d::Label* _label;
+    cocos2d::Label* _timeLeftLabel;
     int _score;
+    int _timeLeft;
     
 };
 
