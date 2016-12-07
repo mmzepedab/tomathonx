@@ -7,6 +7,11 @@
 //
 
 #include "Enemy.h"
+#include "HelloWorldScene.h"
+
+#include <sstream>
+#include <string>
+#include <iostream>
 
 using namespace cocos2d;
 
@@ -18,7 +23,22 @@ Enemy* Enemy::create()
 {
     Enemy* pSprite = new Enemy();
     
-    if (pSprite->initWithSpriteFrameName("frame-1.png"))
+    int randomValue = cocos2d::random(1,2);
+    char enemyFile[100] = {0};
+    
+    switch (randomValue) {
+        case 1:
+            sprintf(enemyFile, "bird-1.png");
+            break;
+        case 2:
+            sprintf(enemyFile, "bug-1.png");
+            break;
+            
+        default:
+            break;
+    }
+    
+    if (pSprite->initWithSpriteFrameName(enemyFile))
     {
         pSprite->autorelease();
         
@@ -69,8 +89,12 @@ void Enemy::touchEvent(cocos2d::Touch* touch, cocos2d::Vec2 _point)
 {
     CCLOG("touched MySprite");
     
-    removeFromParent();
+    //removeFromParent();
     //createExplotion(_point);
+    
+    HelloWorld* helloWorldScene = (HelloWorld *)this->getParent();
+    helloWorldScene->createExplotion(_point);
+    this->removeFromParentAndCleanup(true);
     
 }
 
@@ -79,29 +103,25 @@ void Enemy::createExplotion(cocos2d::Vec2 position){
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     auto s_centre = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
-    
-    SpriteBatchNode* spritebatch = SpriteBatchNode::create("bird.png");
-    SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-    //cache->addSpriteFramesWithFile("explosion.plist");
-    Sprite* Sprite1 = Sprite::createWithSpriteFrameName("frame-1.png");
-    Sprite1->setPosition(position);
-    Sprite1->setScale(0.3);
+    //Add Sprite With Animation Sample - What's added to the screen is the spriteBatch
+    SpriteBatchNode* spritebatch = SpriteBatchNode::create("explosion.png");
+    auto Sprite1 = Sprite::createWithSpriteFrameName("frame-1.png");
+    spritebatch->setPosition(position);
     spritebatch->addChild(Sprite1);
-    addChild(spritebatch);
+    addChild(spritebatch, 100);
+    
     Vector<SpriteFrame*> animFrames(6);
+    
     char str[100] = {0};
-    for(int i = 1; i < 6; i++)
+    for(int i = 1; i < 7; i++)
     {
         sprintf(str, "frame-%d.png", i);
-        SpriteFrame* frame = cache->getSpriteFrameByName( str );
-        //animFrames->addObject(frame);
+        SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName( str );
         animFrames.pushBack(frame);
     }
-    Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.05f);
-    //auto spri = Sprite::createWithSpriteFrame(animFrames.front());
-    //Sprite1->runAction( RepeatForever::create( Animate::create(animation) ) );
-    auto sequence = Sequence::create(Animate::create(animation), RemoveSelf::create() , NULL);
-    Sprite1->runAction(sequence);
+    
+    Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
+    Sprite1->runAction( RepeatForever::create( Animate::create(animation) ) );
     
     //return sequence;
     

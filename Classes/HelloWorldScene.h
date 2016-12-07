@@ -27,7 +27,7 @@ public:
     void addBackground();
     
     void spawnEnemies(float dt);
-    void* createExplotion(cocos2d::Vec2 position);
+    void createExplotion(cocos2d::Vec2 position);
     
     void OnAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event);
     

@@ -50,6 +50,8 @@ bool HelloWorld::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     auto visibleSize = Director::getInstance()->getVisibleSize();
     
+    
+    
     // background
     //auto background = Sprite::createWithSpriteFrameName("frame-5.png");
     //background->setPosition(origin.x + visibleSize.width / 2,origin.y + visibleSize.height/2);
@@ -72,6 +74,18 @@ bool HelloWorld::init()
     //Vec2 origin = Director::getInstance()->getVisibleOrigin();
     auto s_centre = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
     
+    
+    //Sprite *explosionSprite = Sprite::create("explosion/explosion-1.png");
+    auto explosionSprite = Sprite::createWithSpriteFrameName("bird-7.png");
+    explosionSprite->setPosition(s_centre);
+    
+    //addChild(explosionSprite, 100);
+    
+    
+    
+    
+    
+    //createExplotion(s_centre);
     Device::setAccelerometerEnabled(true);
     auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::OnAcceleration, this));
     
@@ -345,14 +359,14 @@ void HelloWorld::spawnEnemies(float dt){
     enemy->setScale(0.3);
     enemy->setPosition(Vec2(s_centre.x , origin.y + enemy->getBoundingBox().size.height / 2  ));
     
-        auto button = cocos2d::ui::Button::create(enemyFile + "/frame-1.png", enemyFile +"/frame-4.png", enemyFile +"/frame-4.png");
+    //auto button = cocos2d::ui::Button::create(enemyFile + "/frame-1.png", enemyFile +"/frame-4.png", enemyFile +"/frame-4.png");
         //auto button = cocos2d::ui::Button::create("frame-1.png", "frame-5.png", "frame-5.png", cocos2d::ui::TextureResType::PLIST);
         
         //Sprite *sprite1 = Sprite::create("11_leaf_head/frame-1.png");
         //sprite1->setPosition(Vec2(s_centre.x + cocos2d::random(-300,300), s_centre.y + cocos2d::random(-300,300)));
     
-        button->setScale(0.3);
-    button->setPosition(Vec2(s_centre.x , origin.y + button->getBoundingBox().size.height / 2  ));
+    //button->setScale(0.3);
+    //button->setPosition(Vec2(s_centre.x , origin.y + button->getBoundingBox().size.height / 2  ));
     
     //auto physicsBody = PhysicsBody::createBox(Size(button->getContentSize().width, button->getContentSize().height), PhysicsMaterial(0, 0.8f, 0));
     
@@ -370,6 +384,7 @@ void HelloWorld::spawnEnemies(float dt){
         //button->setTag(_i);
     _i++;
     
+    /*
         button->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type){
             switch (type)
             {
@@ -397,6 +412,8 @@ void HelloWorld::spawnEnemies(float dt){
                     break;
             }
         });
+     
+     */
         //button->getPhysicsBody()->applyImpulse(Vec2(1000, 200));
         //addChild(button);
     
@@ -419,35 +436,41 @@ void HelloWorld::OnAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *even
     //_label->setString(StringUtils::format("%f",acc->x));
 }
 
-void* HelloWorld::createExplotion(cocos2d::Vec2 position){
+void HelloWorld::createExplotion(cocos2d::Vec2 position){
+    _score++;
+    _label->setString(StringUtils::format("%d", _score));
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sounds/pop.mp3");
+    
+    
+    //-- Add Sprite With Animation Sample - What's added to the screen is the spriteBatch
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     auto s_centre = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
-    
+    //Add Sprite With Animation Sample - What's added to the screen is the spriteBatch
     SpriteBatchNode* spritebatch = SpriteBatchNode::create("explosion.png");
-    SpriteFrameCache* cache = SpriteFrameCache::getInstance();
-    cache->addSpriteFramesWithFile("explosion.plist");
-    Sprite* Sprite1 = Sprite::createWithSpriteFrameName("frame-1.png");
-    Sprite1->setPosition(position);
-    Sprite1->setScale(0.3);
+    auto Sprite1 = Sprite::createWithSpriteFrameName("frame-1.png");
+    spritebatch->setPosition(position);
     spritebatch->addChild(Sprite1);
-    addChild(spritebatch);
+    spritebatch->setScale(0.3);
+    addChild(spritebatch, 100);
+    
     Vector<SpriteFrame*> animFrames(6);
+    
     char str[100] = {0};
-    for(int i = 1; i < 6; i++)
+    for(int i = 1; i < 7; i++)
     {
         sprintf(str, "frame-%d.png", i);
-        SpriteFrame* frame = cache->getSpriteFrameByName( str );
-        //animFrames->addObject(frame);
+        SpriteFrame* frame = SpriteFrameCache::getInstance()->getSpriteFrameByName( str );
         animFrames.pushBack(frame);
     }
-    Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.05f);
-    //auto spri = Sprite::createWithSpriteFrame(animFrames.front());
+    
+    Animation* animation = Animation::createWithSpriteFrames(animFrames, 0.1f);
     //Sprite1->runAction( RepeatForever::create( Animate::create(animation) ) );
+    
     auto sequence = Sequence::create(Animate::create(animation), RemoveSelf::create() , NULL);
     Sprite1->runAction(sequence);
     
-    return sequence;
+    //-- Add Sprite With Animation Sample - What's added to the screen is the spriteBatch
 
 }
 
@@ -493,18 +516,19 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::updateTimer(float dt)
 {
+    _timeLeft--;
+    _timeLeftLabel->setString(StringUtils::format("Tiempo: %d", _timeLeft));
     if(_timeLeft > 0){
-        _timeLeft--;
         
         
         if (_timeLeft == 30) {
             this->unschedule(schedule_selector(HelloWorld::spawnEnemies));
-            //this->schedule(schedule_selector(HelloWorld::spawnEnemies),0.5f);
+            this->schedule(schedule_selector(HelloWorld::spawnEnemies),0.5f);
         }
         
         if (_timeLeft == 10) {
             this->unschedule(schedule_selector(HelloWorld::spawnEnemies));
-            //this->schedule(schedule_selector(HelloWorld::spawnEnemies),0.2f);
+            this->schedule(schedule_selector(HelloWorld::spawnEnemies),0.2f);
         }
         
         if(_timeLeft <= 10){
@@ -514,7 +538,7 @@ void HelloWorld::updateTimer(float dt)
         //_label->setString(std::to_string(_score));
         //StringUtils::format("Tiempo: %d", _timeLeft)
         //StringUtils::format("sounds/Female/%d.ogg", _timeLeft)
-        _timeLeftLabel->setString(StringUtils::format("Tiempo: %d", _timeLeft));
+        
     }else{
         MessageBox("Congrats you lose", "Time's up");
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sounds/Female/time_over.ogg");
