@@ -16,6 +16,15 @@ USING_NS_CC;
 using namespace std;
 
 int _i;
+Vec2 _origin;
+Size _visibleSize;
+Vec2 _s_centre;
+
+
+cocos2d::Label* _label;
+cocos2d::Label* _timeLeftLabel;
+int _score;
+int _timeLeft;
 
 Scene* HelloWorld::createScene()
 {
@@ -40,17 +49,11 @@ bool HelloWorld::init()
     //std::vector<std::string> v{"Hello, ", " Cruel ", "World!"};
     std::string s;
     s = accumulate(begin(FileUtils::getInstance()->getSearchPaths()), end(FileUtils::getInstance()->getSearchPaths()), s);
-    
     CCLOG("Search path: %s", s.c_str());
    
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("bird.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("explosion.plist");
-    
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    
-    
     
     // background
     //auto background = Sprite::createWithSpriteFrameName("frame-5.png");
@@ -70,14 +73,14 @@ bool HelloWorld::init()
     if ( !LayerColor::initWithColor(Color4B(0, 0, 0, 0) )) {
         return false;
     }
-    //auto visibleSize = Director::getInstance()->getVisibleSize();
-    //Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    auto s_centre = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
+    _origin = Director::getInstance()->getVisibleOrigin();
+    _visibleSize = Director::getInstance()->getVisibleSize();
+    auto _s_centre = Vec2(_visibleSize.width/2 + _origin.x, _visibleSize.height/2 + _origin.y);
     
     
     //Sprite *explosionSprite = Sprite::create("explosion/explosion-1.png");
     auto explosionSprite = Sprite::createWithSpriteFrameName("bird-7.png");
-    explosionSprite->setPosition(s_centre);
+    explosionSprite->setPosition(_s_centre);
     
     //addChild(explosionSprite, 100);
     
@@ -94,17 +97,7 @@ bool HelloWorld::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/pop.mp3");
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/10.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/9.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/8.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/7.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/6.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/5.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/4.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/3.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/2.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/1.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/Female/time_over.ogg");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/countdown.mp3");
 
     
    
@@ -113,6 +106,7 @@ bool HelloWorld::init()
     _timeLeft = 60;
     
     addBackground();
+    addHUD();
     
     this->schedule(schedule_selector(HelloWorld::updateTimer),1.0f);
     this->schedule(schedule_selector(HelloWorld::spawnEnemies),1.0f);
@@ -152,15 +146,7 @@ bool HelloWorld::init()
     auto s_centre = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
     */
     //_score = 60;
-    _label = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", StringUtils::format("%d", _score));
-    _label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                             origin.y + visibleSize.height - _label->getContentSize().height));
-    this->addChild(_label, 1);
     
-    _timeLeftLabel = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", StringUtils::format("Tiempo: %d", _timeLeft));
-    _timeLeftLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
-                             origin.y + _label->getContentSize().height));
-    this->addChild(_timeLeftLabel);
     
     //_label = Label::createWithTTF(StringUtils::format("%d", _score), "fonts/clashOfClansFont-ipadhd.fnt");
     //Shadow effect
@@ -241,10 +227,10 @@ bool HelloWorld::init()
     //sprite1->setPhysicsBody(physicsBody);
     
     
-    auto edgeBody = PhysicsBody::createEdgeBox( visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3 );
+    auto edgeBody = PhysicsBody::createEdgeBox( _visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3 );
     
     auto edgeNode = Node::create();
-    edgeNode ->setPosition( Point( visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y ) );
+    edgeNode ->setPosition( Point( _visibleSize.width / 2 + _origin.x, _visibleSize.height / 2 + _origin.y ) );
     edgeNode->setPhysicsBody( edgeBody );
     
     this->addChild( edgeNode );
@@ -289,7 +275,25 @@ void HelloWorld::addBackground(){
     //backgroundSprite->setScale(scale);
     
     //sprite1->setScale(0.20);
-    addChild(backgroundSprite);
+    addChild(backgroundSprite, -1000);
+}
+
+void HelloWorld::addHUD(){
+    _label = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", StringUtils::format("%d", _score));
+    _label->setPosition(Vec2(_origin.x + _visibleSize.width/2,
+                             _origin.y + _visibleSize.height - _label->getContentSize().height));
+    this->addChild(_label, 2);
+    
+    auto timerBGSprite = Sprite::create("timerBG.png");
+    
+    _timeLeftLabel = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", StringUtils::format("Tiempo: %d", _timeLeft));
+    _timeLeftLabel->setPosition(Vec2(_origin.x + _visibleSize.width/2,
+                                     _origin.y + _label->getContentSize().height));
+    
+    timerBGSprite->setPosition(_timeLeftLabel->getPosition());
+    //this->addChild(timerBGSprite, 3);
+    this->addChild(_timeLeftLabel, 4);
+
 }
 
 void HelloWorld::spawnEnemies(float dt){
@@ -356,7 +360,8 @@ void HelloWorld::spawnEnemies(float dt){
         //physicsBody->setVelocity(Vec2(cocos2d::random(-5,5), 500));
         
     Enemy *enemy = Enemy::create();
-    enemy->setScale(0.3);
+    //Scale the enemy to be 20% of the width of the screen
+    enemy->setScale(visibleSize.width / enemy->getContentSize().width * 0.2);
     enemy->setPosition(Vec2(s_centre.x , origin.y + enemy->getBoundingBox().size.height / 2  ));
     
     //auto button = cocos2d::ui::Button::create(enemyFile + "/frame-1.png", enemyFile +"/frame-4.png", enemyFile +"/frame-4.png");
@@ -448,11 +453,11 @@ void HelloWorld::createExplotion(cocos2d::Vec2 position){
     auto s_centre = Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
     //Add Sprite With Animation Sample - What's added to the screen is the spriteBatch
     SpriteBatchNode* spritebatch = SpriteBatchNode::create("explosion.png");
-    auto Sprite1 = Sprite::createWithSpriteFrameName("frame-1.png");
+    Sprite *Sprite1 = Sprite::createWithSpriteFrameName("frame-1.png");
     spritebatch->setPosition(position);
     spritebatch->addChild(Sprite1);
     spritebatch->setScale(0.3);
-    addChild(spritebatch, 100);
+    addChild(spritebatch);
     
     Vector<SpriteFrame*> animFrames(6);
     
@@ -531,8 +536,8 @@ void HelloWorld::updateTimer(float dt)
             this->schedule(schedule_selector(HelloWorld::spawnEnemies),0.2f);
         }
         
-        if(_timeLeft <= 10){
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(StringUtils::format("sounds/Female/%d.ogg", _timeLeft).c_str());
+        if(_timeLeft == 10){
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sounds/countdown.mp3");
         }
         
         //_label->setString(std::to_string(_score));
@@ -540,9 +545,36 @@ void HelloWorld::updateTimer(float dt)
         //StringUtils::format("sounds/Female/%d.ogg", _timeLeft)
         
     }else{
-        MessageBox("Congrats you lose", "Time's up");
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sounds/Female/time_over.ogg");
+        //MessageBox("Congrats you lose", "Time's up");
         this->unschedule(schedule_selector(HelloWorld::updateTimer));
         this->unschedule(schedule_selector(HelloWorld::spawnEnemies));
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+        
+        auto button = cocos2d::ui::Button::create("Button.png", "ButtonYellow.png", "ButtonYellow.png");
+        
+        button->setTitleText("Jugar");
+        button->setScale(_visibleSize.width / button->getContentSize().width * 0.5);
+        button->setPosition(Vec2(_origin.x + _visibleSize.width/2, _origin.y + _visibleSize.height/2 ));
+        
+        button->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type){
+            switch (type)
+            {
+                case ui::Widget::TouchEventType::BEGAN:
+                    break;
+                case ui::Widget::TouchEventType::ENDED:
+                    printf("Button 1 clicked");
+                    
+                    
+                    auto myScene = HelloWorld::createScene();
+                    //Director::getInstance()->replaceScene(myScene);
+                    Director::getInstance()->replaceScene(TransitionSlideInT::create(1, myScene) );
+                    
+                    
+                    break;
+            }
+        });
+        
+        this->addChild(button, 6);
+        
     }
 }

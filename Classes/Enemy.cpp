@@ -40,7 +40,9 @@ Enemy* Enemy::create()
     
     if (pSprite->initWithSpriteFrameName(enemyFile))
     {
-        pSprite->autorelease();
+        pSprite->retain();
+        
+        //pSprite->autorelease();
         
         pSprite->initOptions();
         
@@ -78,8 +80,9 @@ void Enemy::addEvents()
     
     listener->onTouchEnded = [=](cocos2d::Touch* touch, cocos2d::Event* event)
     {
-        cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(listener);
+        
         Enemy::touchEvent(touch, touch->getLocation());
+        cocos2d::Director::getInstance()->getEventDispatcher()->removeEventListener(listener);
     };
     
     cocos2d::Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 30);
@@ -92,9 +95,19 @@ void Enemy::touchEvent(cocos2d::Touch* touch, cocos2d::Vec2 _point)
     //removeFromParent();
     //createExplotion(_point);
     
-    HelloWorld* helloWorldScene = (HelloWorld *)this->getParent();
-    helloWorldScene->createExplotion(_point);
-    this->removeFromParentAndCleanup(true);
+    //HelloWorld* helloWorldScene = (HelloWorld *)this->getParent();
+    
+    
+    HelloWorld *helloWorldScene = (HelloWorld *)this->getParent();
+
+    if(helloWorldScene != NULL){
+        helloWorldScene->createExplotion(_point);
+    }
+    
+    this->removeFromParentAndCleanup(false);
+    
+    //this->removeFromParentAndCleanup(true);
+    //removeFromParent();
     
 }
 

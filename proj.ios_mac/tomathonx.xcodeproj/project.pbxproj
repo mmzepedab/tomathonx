@@ -77,6 +77,7 @@
 		D2B7273B1DF611200096DDDD /* 09_blue_bear in Resources */ = {isa = PBXBuildFile; fileRef = D2B727311DF611200096DDDD /* 09_blue_bear */; };
 		D2B7273C1DF611200096DDDD /* 10_pink_hairy_bug in Resources */ = {isa = PBXBuildFile; fileRef = D2B727321DF611200096DDDD /* 10_pink_hairy_bug */; };
 		D2B7273E1DF62C310096DDDD /* uncolored_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7273D1DF62C310096DDDD /* uncolored_castle.png */; };
+		D2B727421DF8FE730096DDDD /* timerBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B727411DF8FE730096DDDD /* timerBG.png */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -198,6 +199,7 @@
 		D2B727311DF611200096DDDD /* 09_blue_bear */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 09_blue_bear; sourceTree = "<group>"; };
 		D2B727321DF611200096DDDD /* 10_pink_hairy_bug */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 10_pink_hairy_bug; sourceTree = "<group>"; };
 		D2B7273D1DF62C310096DDDD /* uncolored_castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncolored_castle.png; sourceTree = "<group>"; };
+		D2B727411DF8FE730096DDDD /* timerBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerBG.png; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -335,6 +337,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2B727411DF8FE730096DDDD /* timerBG.png */,
 				D2B727291DF611200096DDDD /* 01_Pretty_Bird */,
 				D2B7272A1DF611200096DDDD /* 02_green_cat */,
 				D2B7272B1DF611200096DDDD /* 03_Biting_Bee */,
@@ -568,6 +571,7 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				D2B727391DF611200096DDDD /* 07_flying_pumpkin in Resources */,
 				D2B7273E1DF62C310096DDDD /* uncolored_castle.png in Resources */,
+				D2B727421DF8FE730096DDDD /* timerBG.png in Resources */,
 				FE427D4F1DF89A2000ECF01A /* explosion in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
