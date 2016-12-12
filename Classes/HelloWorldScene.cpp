@@ -27,9 +27,12 @@ cocos2d::Label* _label;
 cocos2d::Label* _timeLeftLabel;
 int _score;
 int _timeLeft;
+cocos2d::Label* _bigCountDownLabel;
 
 cocos2d::PhysicsBody *_physicsBody;
 bool isScreenBeingTouched = false;
+
+bool _isGameActive = false;
 
 EnemyAnimation *_enemy;
 
@@ -63,6 +66,11 @@ bool HelloWorld::init()
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("bird.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("explosion.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cat.plist");
+    
+    //SpriteFrameCache::getInstance()->
+    
+    TextureCache::sharedTextureCache()->addImage("buttonGreen.png");
+    TextureCache::sharedTextureCache()->addImage("buttonYellow.png");
     
     // background
     //auto background = Sprite::createWithSpriteFrameName("frame-5.png");
@@ -108,6 +116,16 @@ bool HelloWorld::init()
     _i = 0;
     _score = 0;
     _timeLeft = 60;
+    _isGameActive = true;
+    _bigCountDownLabel = cocos2d::Label::createWithTTF("10", "fonts/supercell.ttf", 30);
+    _bigCountDownLabel->setColor(Color3B(0,179,211));
+    _bigCountDownLabel->setOpacity(0);
+    _bigCountDownLabel->setPosition(Point( _visibleSize.width / 2 + _origin.x, _visibleSize.height / 2 + _origin.y ));
+    //Shadow effect
+    _bigCountDownLabel->enableOutline(Color4B(0,0,0,255), 1);
+    _bigCountDownLabel->enableShadow(Color4B(0,0,0,255),Size(0,-1),0);
+    
+    this->addChild(_bigCountDownLabel, 200);
     
     addBackground();
     addHUD();
@@ -119,6 +137,16 @@ bool HelloWorld::init()
     edgeNode->setPhysicsBody( edgeBody );
     
     this->addChild( edgeNode );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -512,7 +540,10 @@ void HelloWorld::OnAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *even
 }
 
 void HelloWorld::createExplotion(cocos2d::Vec2 position){
-    _score++;
+    
+    if(_isGameActive){
+        _score++;
+    }
     _label->setString(StringUtils::format("%d", _score));
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sounds/pop.mp3");
     
@@ -610,30 +641,62 @@ void HelloWorld::updateTimer(float dt)
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sounds/countdown.mp3");
         }
         
+        if(_timeLeft < 11){
+            _bigCountDownLabel->setString(StringUtils::format("%d", _timeLeft));
+            auto fadeInFadeOutSequence = Sequence::create(FadeIn::create(0.5), FadeOut::create(0.5), NULL);
+            _bigCountDownLabel->runAction(fadeInFadeOutSequence);
+        }
+        
         //_label->setString(std::to_string(_score));
         //StringUtils::format("Tiempo: %d", _timeLeft)
         //StringUtils::format("sounds/Female/%d.ogg", _timeLeft)
         
     }else{
+        _isGameActive = false;
+        
         //MessageBox("Congrats you lose", "Time's up");
         this->unschedule(schedule_selector(HelloWorld::updateTimer));
         this->unschedule(schedule_selector(HelloWorld::spawnEnemies));
         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
         
+        auto gameOverBGSprite = Sprite::create("gameOverBg.png");
+        gameOverBGSprite->setPosition(Vec2(_origin.x + _visibleSize.width/2, _origin.y + _visibleSize.height/2 ));
+        addChild(gameOverBGSprite);
         
+        
+        
+        cocos2d::Label* finalScoreLabel = Label::createWithTTF("0", "fonts/supercell.ttf", 30);
+        finalScoreLabel->setString(StringUtils::format("%d", _score));
+        finalScoreLabel->setPosition(Vec2(gameOverBGSprite->getContentSize().width / 2.0, gameOverBGSprite->getContentSize().height / 2.5 ));
+        finalScoreLabel->enableOutline(Color4B(0,0,0,255), 1);
+        finalScoreLabel->enableShadow(Color4B(0,0,0,255),Size(0,-1),0);
+        gameOverBGSprite->addChild(finalScoreLabel);
+        
+        //Action *zoomIN = ScaleBy::create(0.5f, 0.7f);
+        //Action *zoomOut = zoomIN->reverse();
+        Sequence *zoomSeq = Sequence::create(ScaleTo::create(0.5f, 0.7f), ScaleTo::create(0.5f, 1.0f), NULL);
+        //finalScoreLabel->runAction(zoomSeq);
+        
+        finalScoreLabel->runAction( RepeatForever::create( zoomSeq ) );
+        
+        cocos2d::Label* finalScoreTitleLabel = Label::createWithTTF("Score:", "fonts/supercell.ttf", 12);
+        finalScoreTitleLabel->setPosition(Vec2(finalScoreLabel->getPosition().x, finalScoreLabel->getPosition().y + finalScoreLabel->getContentSize().height / 2 + finalScoreTitleLabel->getContentSize().height / 2));
+        finalScoreTitleLabel->enableOutline(Color4B(0,0,0,255), 1);
+        finalScoreTitleLabel->enableShadow(Color4B(0,0,0,255),Size(0,-1),0);
+        gameOverBGSprite->addChild(finalScoreTitleLabel);
         
         auto button = cocos2d::ui::Button::create("buttonGreen.png", "buttonYellow.png", "buttonYellow.png");
         
         //button->setTitleText("Jugar");
         button->setScale(_visibleSize.width / button->getContentSize().width * 0.5);
-        button->setPosition(Vec2(_origin.x + _visibleSize.width/2, _origin.y + _visibleSize.height/2 ));
+        button->setPosition(Vec2(gameOverBGSprite->getPosition().x, gameOverBGSprite->getPosition().y - gameOverBGSprite->getContentSize().height / 2 ));
         
         //_label = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", "Jugar");
         cocos2d::Label *buttonLabel = Label::createWithTTF("Jugar", "fonts/supercell.ttf", 17);
         //Shadow effect
         buttonLabel->enableOutline(Color4B(0,0,0,150), 1);
         buttonLabel->enableShadow(Color4B(0,0,0,100),Size(0,-1),0);
-        buttonLabel->setPosition(Vec2(button->getContentSize().width / 2, button->getContentSize().height / 2));
+        buttonLabel->setPosition(Vec2(button->getContentSize().width / 2, button->getContentSize().height / 1.8));
         //_label->setAnchorPoint(Vec2(0.5f, 0.5f));
         
         button->addChild(buttonLabel);

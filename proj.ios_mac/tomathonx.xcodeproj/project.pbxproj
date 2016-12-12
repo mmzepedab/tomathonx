@@ -92,6 +92,7 @@
 		FE036EBC1DEF49B800DD89F7 /* frame-2.png in Resources */ = {isa = PBXBuildFile; fileRef = FE036EBB1DEF49B800DD89F7 /* frame-2.png */; };
 		FE036EC31DF75DF100DD89F7 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE036EC21DF75DF100DD89F7 /* Enemy.cpp */; };
 		FE427D4F1DF89A2000ECF01A /* explosion in Resources */ = {isa = PBXBuildFile; fileRef = FE427D4E1DF89A2000ECF01A /* explosion */; };
+		FEA9266C1DFF4A4D002B5D81 /* gameOverBg.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA9266B1DFF4A4D002B5D81 /* gameOverBg.png */; };
 		FECF4D8F1DE79E8200D435A6 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = FECF4D8D1DE79E8200D435A6 /* Button.png */; };
 /* End PBXBuildFile section */
 
@@ -219,6 +220,7 @@
 		FE036EC01DF75D8100DD89F7 /* Enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		FE036EC21DF75DF100DD89F7 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		FE427D4E1DF89A2000ECF01A /* explosion */ = {isa = PBXFileReference; lastKnownFileType = folder; path = explosion; sourceTree = "<group>"; };
+		FEA9266B1DFF4A4D002B5D81 /* gameOverBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOverBg.png; sourceTree = "<group>"; };
 		FECF4D8D1DE79E8200D435A6 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,6 +346,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FEA9266B1DFF4A4D002B5D81 /* gameOverBg.png */,
 				D2BE38171DFD06B00081D555 /* Buttons */,
 				D2B727411DF8FE730096DDDD /* timerBG.png */,
 				D2B727291DF611200096DDDD /* 01_Pretty_Bird */,
@@ -577,6 +580,7 @@
 				D2B7273B1DF611200096DDDD /* 09_blue_bear in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				D2B727381DF611200096DDDD /* 06_little_bat in Resources */,
+				FEA9266C1DFF4A4D002B5D81 /* gameOverBg.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				D2B7273C1DF611200096DDDD /* 10_pink_hairy_bug in Resources */,
