@@ -10,6 +10,8 @@
 #include <iostream>
 
 #include "Enemy.h"
+#include "EnemyAnimation.hpp"
+
 
 USING_NS_CC;
 
@@ -26,11 +28,17 @@ cocos2d::Label* _timeLeftLabel;
 int _score;
 int _timeLeft;
 
+cocos2d::PhysicsBody *_physicsBody;
+bool isScreenBeingTouched = false;
+
+EnemyAnimation *_enemy;
+
 Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::createWithPhysics();
     //scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    
     
     // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
@@ -54,15 +62,14 @@ bool HelloWorld::init()
     
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("bird.plist");
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("explosion.plist");
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("cat.plist");
     
     // background
     //auto background = Sprite::createWithSpriteFrameName("frame-5.png");
     //background->setPosition(origin.x + visibleSize.width / 2,origin.y + visibleSize.height/2);
     //this->addChild(background, 5);
     
-    //Enemy *enemy = Enemy::create();
-    //enemy->setPosition(origin.x + visibleSize.width / 2,origin.y + visibleSize.height/2);
-    //addChild(enemy, 5);
+    
     
     //////////////////////////////
     // 1. super init first
@@ -85,18 +92,15 @@ bool HelloWorld::init()
     //addChild(explosionSprite, 100);
     
     
-    
-    
-    
     //createExplotion(s_centre);
     Device::setAccelerometerEnabled(true);
+    Device::setAccelerometerInterval(1.0f/60.f);
     auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::OnAcceleration, this));
-    
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sounds/cheerful_annoyance.ogg");
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sounds/cheerful_annoyance.ogg", true);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/pop.mp3");
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sounds/backgroundMusic.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sounds/backgroundMusic.mp3", true);
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/pop.mp3");    
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("sounds/countdown.mp3");
 
     
@@ -108,6 +112,64 @@ bool HelloWorld::init()
     addBackground();
     addHUD();
     
+    auto edgeBody = PhysicsBody::createEdgeBox( _visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3 );
+    
+    auto edgeNode = Node::create();
+    edgeNode ->setPosition( Point( _visibleSize.width / 2 + _origin.x, _visibleSize.height / 2 + _origin.y ) );
+    edgeNode->setPhysicsBody( edgeBody );
+    
+    this->addChild( edgeNode );
+    
+    
+    
+    
+    //WORKING: Enemy floating with Impulse
+    /*
+    _enemy = EnemyAnimation::create();
+    _enemy->setPosition(_origin.x + _enemy->getContentSize().width / 2 ,_origin.y + _visibleSize.height/2);
+    _enemy->setScale(_visibleSize.width / _enemy->getContentSize().width * 0.2);
+    _physicsBody = PhysicsBody::createCircle(_enemy->getContentSize().height / 2, PhysicsMaterial(0.0f, 1.0f, 0.1f));
+    
+    _physicsBody->applyImpulse(Vect( 0, 30));
+    _physicsBody->setGravityEnable(true);
+    _physicsBody->setDynamic(true);
+    _physicsBody->setTag(1);
+    _physicsBody->setVelocity(Vec2(0, -100));
+    _enemy->setPhysicsBody(_physicsBody);
+    //enemy->setTag(_i);
+    addChild(_enemy);
+    
+    
+    auto listener1 = EventListenerTouchOneByOne::create();
+    
+    
+    // trigger when you push down
+    listener1->onTouchBegan = [](Touch* touch, Event* event){
+        // your code
+        CCLOG("Tocado");
+        isScreenBeingTouched = true;
+        
+        return true; // if you are consuming it
+    };
+    
+    // trigger when moving touch
+    listener1->onTouchMoved = [](Touch* touch, Event* event){
+        // your code
+    };
+    
+    // trigger when you let up
+    listener1->onTouchEnded = [=](Touch* touch, Event* event){
+        // your code
+        //physicsBody->applyImpulse(Vect( 0, 2000));
+        isScreenBeingTouched = false;
+    };
+    
+    // Add listener
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);
+    */
+    //WORKING: Enemy floating with impulse
+    
+    //this->schedule(schedule_selector(HelloWorld::applyImpulse),0.1f);
     this->schedule(schedule_selector(HelloWorld::updateTimer),1.0f);
     this->schedule(schedule_selector(HelloWorld::spawnEnemies),1.0f);
 
@@ -148,7 +210,7 @@ bool HelloWorld::init()
     //_score = 60;
     
     
-    //_label = Label::createWithTTF(StringUtils::format("%d", _score), "fonts/clashOfClansFont-ipadhd.fnt");
+    //_label = Label::createWithTTF(StringUtils::format("%d", _score), "fonts/clashOfClansFont-ipadhd.fnt", 25);
     //Shadow effect
     //_label->enableShadow(Color4B(0,0,0,255),Size(1,-1),0);
      
@@ -227,13 +289,7 @@ bool HelloWorld::init()
     //sprite1->setPhysicsBody(physicsBody);
     
     
-    auto edgeBody = PhysicsBody::createEdgeBox( _visibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3 );
     
-    auto edgeNode = Node::create();
-    edgeNode ->setPosition( Point( _visibleSize.width / 2 + _origin.x, _visibleSize.height / 2 + _origin.y ) );
-    edgeNode->setPhysicsBody( edgeBody );
-    
-    this->addChild( edgeNode );
     
     
     //this->getPhysicsWorld->setGravity(Vec2(0, -10.0f));
@@ -251,6 +307,13 @@ bool HelloWorld::init()
     //this->scheduleOnce(schedule_selector(HelloWorld::spawnEnemies), 2.0f);
     
     return true;
+}
+                   
+                   
+void HelloWorld::applyImpulse(float dt){
+    if(isScreenBeingTouched == true){
+        _physicsBody->applyImpulse(Vect( 0, 30));
+    }
 }
 
 
@@ -438,6 +501,13 @@ void HelloWorld::OnAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *even
     
     Director::getInstance()->getRunningScene()->getPhysicsWorld()->setGravity(Vec2((acc->x)*200, (acc->y)*200));
 
+    /* WORKING: Rotate sprite with Accelerometer
+    float angleRadians = atanf((float)acc->x / (float)acc->y);
+    float angleDegrees = -CC_RADIANS_TO_DEGREES(angleRadians);
+    float cocosAngle = 1 * angleDegrees;
+    _enemy->setRotation(cocosAngle);
+     */
+    
     //_label->setString(StringUtils::format("%f",acc->x));
 }
 
@@ -550,11 +620,30 @@ void HelloWorld::updateTimer(float dt)
         this->unschedule(schedule_selector(HelloWorld::spawnEnemies));
         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
         
-        auto button = cocos2d::ui::Button::create("Button.png", "ButtonYellow.png", "ButtonYellow.png");
         
-        button->setTitleText("Jugar");
+        
+        auto button = cocos2d::ui::Button::create("buttonGreen.png", "buttonYellow.png", "buttonYellow.png");
+        
+        //button->setTitleText("Jugar");
         button->setScale(_visibleSize.width / button->getContentSize().width * 0.5);
         button->setPosition(Vec2(_origin.x + _visibleSize.width/2, _origin.y + _visibleSize.height/2 ));
+        
+        //_label = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", "Jugar");
+        cocos2d::Label *buttonLabel = Label::createWithTTF("Jugar", "fonts/supercell.ttf", 17);
+        //Shadow effect
+        buttonLabel->enableOutline(Color4B(0,0,0,150), 1);
+        buttonLabel->enableShadow(Color4B(0,0,0,100),Size(0,-1),0);
+        buttonLabel->setPosition(Vec2(button->getContentSize().width / 2, button->getContentSize().height / 2));
+        //_label->setAnchorPoint(Vec2(0.5f, 0.5f));
+        
+        button->addChild(buttonLabel);
+        //addChild(button, 500);
+        
+        //auto button = cocos2d::ui::Button::create("Button.png", "ButtonYellow.png", "ButtonYellow.png");
+        
+        //button->setTitleText("Jugar");
+        //button->setScale(_visibleSize.width / button->getContentSize().width * 0.5);
+        //button->setPosition(Vec2(_origin.x + _visibleSize.width/2, _origin.y + _visibleSize.height/2 ));
         
         button->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type){
             switch (type)

@@ -32,6 +32,9 @@ public:
     
     void OnAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event);
     
+    void applyImpulse(float dt);
+    
+    
 protected:
     
 };

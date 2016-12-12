@@ -23,7 +23,7 @@ Enemy* Enemy::create()
 {
     Enemy* pSprite = new Enemy();
     
-    int randomValue = cocos2d::random(1,2);
+    int randomValue = cocos2d::random(1,3);
     char enemyFile[100] = {0};
     
     switch (randomValue) {
@@ -32,6 +32,9 @@ Enemy* Enemy::create()
             break;
         case 2:
             sprintf(enemyFile, "bug-1.png");
+            break;
+        case 3:
+            sprintf(enemyFile, "cat-1.png");
             break;
             
         default:

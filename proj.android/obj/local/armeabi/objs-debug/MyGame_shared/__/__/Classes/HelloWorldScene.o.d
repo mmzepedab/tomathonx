@@ -413,7 +413,7 @@ obj/local/armeabi/objs-debug/MyGame_shared/__/__/Classes/HelloWorldScene.o: \
  /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../ui/UITabControl.h \
  /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../editor-support/cocostudio/CocosStudioExtension.h \
  /Users/mmzepedab/Documents/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
- jni/../../Classes/Enemy.h
+ jni/../../Classes/Enemy.h jni/../../Classes/EnemyAnimation.hpp
 
 jni/../../Classes/HelloWorldScene.h:
 
@@ -1242,3 +1242,5 @@ jni/../../Classes/HelloWorldScene.h:
 /Users/mmzepedab/Documents/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream:
 
 jni/../../Classes/Enemy.h:
+
+jni/../../Classes/EnemyAnimation.hpp:

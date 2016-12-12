@@ -78,6 +78,10 @@
 		D2B7273C1DF611200096DDDD /* 10_pink_hairy_bug in Resources */ = {isa = PBXBuildFile; fileRef = D2B727321DF611200096DDDD /* 10_pink_hairy_bug */; };
 		D2B7273E1DF62C310096DDDD /* uncolored_castle.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7273D1DF62C310096DDDD /* uncolored_castle.png */; };
 		D2B727421DF8FE730096DDDD /* timerBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B727411DF8FE730096DDDD /* timerBG.png */; };
+		D2BE380F1DFC88280081D555 /* EnemyAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2BE380D1DFC88280081D555 /* EnemyAnimation.cpp */; };
+		D2BE38191DFD06C10081D555 /* blue_button00.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BE38181DFD06C10081D555 /* blue_button00.png */; };
+		D2BE381B1DFD0A3C0081D555 /* buttonGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BE381A1DFD0A3C0081D555 /* buttonGreen.png */; };
+		D2BE381D1DFD1C690081D555 /* buttonYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BE381C1DFD1C690081D555 /* buttonYellow.png */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -89,7 +93,6 @@
 		FE036EC31DF75DF100DD89F7 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE036EC21DF75DF100DD89F7 /* Enemy.cpp */; };
 		FE427D4F1DF89A2000ECF01A /* explosion in Resources */ = {isa = PBXBuildFile; fileRef = FE427D4E1DF89A2000ECF01A /* explosion */; };
 		FECF4D8F1DE79E8200D435A6 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = FECF4D8D1DE79E8200D435A6 /* Button.png */; };
-		FECF4D901DE79E8200D435A6 /* ButtonYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = FECF4D8E1DE79E8200D435A6 /* ButtonYellow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +203,11 @@
 		D2B727321DF611200096DDDD /* 10_pink_hairy_bug */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 10_pink_hairy_bug; sourceTree = "<group>"; };
 		D2B7273D1DF62C310096DDDD /* uncolored_castle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncolored_castle.png; sourceTree = "<group>"; };
 		D2B727411DF8FE730096DDDD /* timerBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timerBG.png; sourceTree = "<group>"; };
+		D2BE380D1DFC88280081D555 /* EnemyAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyAnimation.cpp; sourceTree = "<group>"; };
+		D2BE380E1DFC88280081D555 /* EnemyAnimation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemyAnimation.hpp; sourceTree = "<group>"; };
+		D2BE38181DFD06C10081D555 /* blue_button00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_button00.png; sourceTree = "<group>"; };
+		D2BE381A1DFD0A3C0081D555 /* buttonGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonGreen.png; sourceTree = "<group>"; };
+		D2BE381C1DFD1C690081D555 /* buttonYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonYellow.png; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -212,7 +220,6 @@
 		FE036EC21DF75DF100DD89F7 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
 		FE427D4E1DF89A2000ECF01A /* explosion */ = {isa = PBXFileReference; lastKnownFileType = folder; path = explosion; sourceTree = "<group>"; };
 		FECF4D8D1DE79E8200D435A6 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
-		FECF4D8E1DE79E8200D435A6 /* ButtonYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonYellow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +344,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2BE38171DFD06B00081D555 /* Buttons */,
 				D2B727411DF8FE730096DDDD /* timerBG.png */,
 				D2B727291DF611200096DDDD /* 01_Pretty_Bird */,
 				D2B7272A1DF611200096DDDD /* 02_green_cat */,
@@ -354,7 +362,6 @@
 				D2B7273D1DF62C310096DDDD /* uncolored_castle.png */,
 				FE427D4E1DF89A2000ECF01A /* explosion */,
 				FECF4D8D1DE79E8200D435A6 /* Button.png */,
-				FECF4D8E1DE79E8200D435A6 /* ButtonYellow.png */,
 				FE036EBB1DEF49B800DD89F7 /* frame-2.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -375,6 +382,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				FE036EC01DF75D8100DD89F7 /* Enemy.h */,
 				FE036EC21DF75DF100DD89F7 /* Enemy.cpp */,
+				D2BE380D1DFC88280081D555 /* EnemyAnimation.cpp */,
+				D2BE380E1DFC88280081D555 /* EnemyAnimation.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -426,6 +435,16 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		D2BE38171DFD06B00081D555 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				D2BE38181DFD06C10081D555 /* blue_button00.png */,
+				D2BE381A1DFD0A3C0081D555 /* buttonGreen.png */,
+				D2BE381C1DFD1C690081D555 /* buttonYellow.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -544,15 +563,16 @@
 				D2B727351DF611200096DDDD /* 03_Biting_Bee in Resources */,
 				D2B727281DF60B0A0096DDDD /* sounds in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
-				FECF4D901DE79E8200D435A6 /* ButtonYellow.png in Resources */,
 				FE036EBC1DEF49B800DD89F7 /* frame-2.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
+				D2BE381D1DFD1C690081D555 /* buttonYellow.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				D2B727361DF611200096DDDD /* 04_angry_egg in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				D2B727341DF611200096DDDD /* 02_green_cat in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				D2B727251DF6093A0096DDDD /* 11_leaf_head in Resources */,
+				D2BE38191DFD06C10081D555 /* blue_button00.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				D2B7273B1DF611200096DDDD /* 09_blue_bear in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
@@ -577,6 +597,7 @@
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				D2B727371DF611200096DDDD /* 05_earphone_bug in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				D2BE381B1DFD0A3C0081D555 /* buttonGreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +624,7 @@
 				FE036EC31DF75DF100DD89F7 /* Enemy.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				D2BE380F1DFC88280081D555 /* EnemyAnimation.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

@@ -17,8 +17,10 @@
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/09_blue_bear \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/10_pink_hairy_bug \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/11_leaf_head \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/blue_button00.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/Button.png \
-/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/ButtonYellow.png \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/buttonGreen.png \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/buttonYellow.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/CloseNormal.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/CloseSelected.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/explosion \
@@ -120,6 +122,7 @@
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/fonts/clashOfClansFont-ipadhd.fnt \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/fonts/clashOfClansFont-ipadhd.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/fonts/Marker Felt.ttf \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/fonts/supercell.ttf \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/Button.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HD \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR \
@@ -127,16 +130,23 @@
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HD/bird.plist \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HD/bird.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HD/Button.png \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HD/cat.plist \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HD/cat.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/bird.plist \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/bird.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/Button.png \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/cat.plist \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/cat.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/explosion.plist \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/HDR/explosion.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/bird.plist \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/bird.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/Button.png \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/cat.plist \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/cat.png \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/explosion.plist \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/res/SD/explosion.png \
+/Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/sounds/backgroundMusic.mp3 \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/sounds/cheerful_annoyance.ogg \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/sounds/countdown.mp3 \
 /Users/mmzepedab/Desktop/mario/tomathonx/proj.android/assets/sounds/Female \
