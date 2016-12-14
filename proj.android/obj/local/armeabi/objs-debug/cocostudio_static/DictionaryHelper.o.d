@@ -5,14 +5,14 @@ obj/local/armeabi/objs-debug/cocostudio_static/DictionaryHelper.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/android/log.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./editor-support/cocostudio/DictionaryHelper.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/flatbuffers/../json/document.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/flatbuffers/../json/reader.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/flatbuffers/../json/rapidjson.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cstdlib \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/inttypes.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/inttypes.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/flatbuffers/../json/allocators.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/flatbuffers/../json/encodings.h \
@@ -42,7 +42,7 @@ obj/local/armeabi/objs-debug/cocostudio_static/DictionaryHelper.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/android/log.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./editor-support/cocostudio/DictionaryHelper.h:
 
@@ -56,7 +56,7 @@ obj/local/armeabi/objs-debug/cocostudio_static/DictionaryHelper.o: \
 
 /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cstring:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/inttypes.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/inttypes.h:
 
 /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
 

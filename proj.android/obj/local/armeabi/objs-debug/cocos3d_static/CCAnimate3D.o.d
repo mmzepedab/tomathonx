@@ -12,7 +12,7 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCAnimate3D.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/CCPlatformConfig.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/CCPlatformDefine.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/android/log.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../base/CCRef.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../math/CCMath.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../math/Vec2.h \
@@ -25,7 +25,7 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCAnimate3D.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../math/Mat4.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../base/ccMacros.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../base/CCConsole.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/sys/select.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/mutex \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/CCStdC.h \
@@ -43,10 +43,10 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCAnimate3D.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../math/CCGeometry.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/CCGL.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/android/CCGL-android.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2platform.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/KHR/khrplatform.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2ext.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2platform.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/KHR/khrplatform.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2ext.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../3d/CCAABB.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../2d/CCActionInterval.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../2d/CCAction.h \
@@ -119,7 +119,7 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCAnimate3D.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/android/CCPlatformDefine-android.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/android/log.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../base/CCRef.h:
 
@@ -145,7 +145,7 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCAnimate3D.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../base/CCConsole.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/sys/select.h:
 
 /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread:
 
@@ -181,13 +181,13 @@ obj/local/armeabi/objs-debug/cocos3d_static/CCAnimate3D.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../platform/android/CCGL-android.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2platform.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2platform.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/KHR/khrplatform.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/KHR/khrplatform.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2ext.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2ext.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/3d/../3d/CCAABB.h:
 

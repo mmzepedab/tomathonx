@@ -8,15 +8,15 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/android/log.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCRef.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/CCStdC.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/math.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/stdlib.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/alloca.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/strings.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/memory.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/math.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/stdlib.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/alloca.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/strings.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/memory.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/jni/Java_org_cocos2dx_lib_Cocos2dxHelper.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./2d/CCFontFreeType.h \
@@ -25,7 +25,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./math/CCGeometry.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/ccMacros.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCConsole.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/sys/select.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
@@ -47,18 +47,18 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./math/Quaternion.inl \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/CCGL.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCGL-android.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2platform.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/KHR/khrplatform.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2ext.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2platform.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/KHR/khrplatform.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2ext.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/ft2build.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/config/ftheader.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/freetype.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/config/ftconfig.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/config/ftoption.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/config/ftstdlib.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/setjmp.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/setjmp.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/setjmp.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/machine/setjmp.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/fttypes.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/ftsystem.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/ftimage.h \
@@ -71,7 +71,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/ccUTF8.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/jni/JniHelper.h \
- /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/jni.h \
+ /Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/jni.h \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCDirector.h \
  /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/stack \
  /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCVector.h \
@@ -115,7 +115,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/android/log.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/android/log.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCRef.h:
 
@@ -123,15 +123,15 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/math.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/math.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/stdlib.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/stdlib.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/alloca.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/alloca.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/strings.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/strings.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/memory.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/memory.h:
 
 /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/cassert:
 
@@ -149,7 +149,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCConsole.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/sys/select.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/sys/select.h:
 
 /Users/mzepeda/Desktop/cocos/android-ndk-r10e/sources/cxx-stl/gnu-libstdc++/4.9/include/thread:
 
@@ -193,13 +193,13 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/CCGL-android.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2platform.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2platform.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/KHR/khrplatform.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/KHR/khrplatform.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/GLES2/gl2ext.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/GLES2/gl2ext.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/ft2build.h:
 
@@ -213,9 +213,9 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/config/ftstdlib.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/setjmp.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/setjmp.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/machine/setjmp.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/machine/setjmp.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/external/freetype2/prebuilt/android/../../include/android/freetype2/fttypes.h:
 
@@ -241,7 +241,7 @@ obj/local/armeabi/objs-debug/cocos2dx_internal_static/2d/CCFontAtlas.o: \
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./platform/android/jni/JniHelper.h:
 
-/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-19/arch-arm/usr/include/jni.h:
+/Users/mzepeda/Desktop/cocos/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/jni.h:
 
 /Users/mzepeda/Desktop/mario/tomathonx/proj.android/../cocos2d/cocos/./base/CCDirector.h:
 

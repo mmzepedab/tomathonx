@@ -1,0 +1,22 @@
+/Users/mzepeda/Desktop/mario/tomathonx/proj.android/bin/tomathonx-debug-unaligned.apk : \
+/Users/mzepeda/Desktop/mario/tomathonx/proj.android/bin/tomathonx.ap_ \
+/Users/mzepeda/Desktop/mario/tomathonx/proj.android/bin/classes.dex \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/bin/classes.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/facebook_lib/bin/classes.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/android_support_v7/appcompat/bin/classes.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/android_support_v7/cardview/bin/classes.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/proj.android/plugin_review_res_project/bin/classes.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/PluginReview.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/android_support_v7/cardview/libs/android-support-v7-cardview.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/facebook_lib/libs/bolts-android-1.1.2.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/org.apache.http.legacy.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/PluginFacebook.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/android_support_v7/appcompat/libs/android-support-v4.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/com.android.vending.expansion.zipfile.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/sdkbox.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/android_support_v7/appcompat/libs/android-support-v7-appcompat.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/facebook_lib/libs/facebook-android-4.17.0.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/httpclient-4.4.1.1.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/cocos2d/cocos/platform/android/java/libs/android-async-http-1.4.9.jar \
+/Users/mzepeda/Desktop/mario/tomathonx/proj.android/libs/armeabi/gdbserver \
+/Users/mzepeda/Desktop/mario/tomathonx/proj.android/libs/armeabi/libMyGame.so \

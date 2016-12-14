@@ -3,10 +3,10 @@
 
 #include "cocos2d.h"
 #include "network/HttpClient.h"
+#include "PluginFacebook/PluginFacebook.h"
 
 
-
-class HelloWorld : public cocos2d::LayerColor
+class HelloWorld : public cocos2d::LayerColor, sdkbox::FacebookListener
 {
 public:
     static cocos2d::Scene* createScene();
@@ -36,6 +36,22 @@ public:
     
     
 protected:
+    
+private:
+    //Facebook callback
+    void onLogin(bool isLogin, const std::string& msg);
+    void onSharedSuccess(const std::string& message);
+    void onSharedFailed(const std::string& message);
+    void onSharedCancel();
+    void onAPI(const std::string& key, const std::string& jsonData);
+    void onPermission(bool isLogin, const std::string& msg);
+    void onFetchFriends(bool ok, const std::string& msg);
+    void onRequestInvitableFriends( const sdkbox::FBInvitableFriendsInfo& friends );
+    void onInviteFriendsWithInviteIdsResult( bool result, const std::string& msg );
+    void onInviteFriendsResult( bool result, const std::string& msg );
+    void onGetUserInfo( const sdkbox::FBGraphUser& userInfo );
+    
+    
     
 };
 

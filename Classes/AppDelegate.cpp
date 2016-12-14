@@ -1,5 +1,11 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#ifdef SDKBOX_ENABLED
+#include "PluginReview/PluginReview.h"
+#endif
+#ifdef SDKBOX_ENABLED
+#include "PluginFacebook/PluginFacebook.h"
+#endif
 
 USING_NS_CC;
 
@@ -34,6 +40,12 @@ static int register_all_packages()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+#ifdef SDKBOX_ENABLED
+    sdkbox::PluginReview::init();
+#endif
+#ifdef SDKBOX_ENABLED
+    //sdkbox::PluginFacebook::init();
+#endif
     
     
     initMultiResolution();

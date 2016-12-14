@@ -12,6 +12,8 @@
 #include "Enemy.h"
 #include "EnemyAnimation.hpp"
 
+#include "PluginFacebook/PluginFacebook.h"
+
 
 USING_NS_CC;
 
@@ -138,10 +140,78 @@ bool HelloWorld::init()
     
     this->addChild( edgeNode );
     
+    sdkbox::PluginFacebook::setListener(this);
     
+    #ifdef SDKBOX_ENABLED
+    sdkbox::PluginFacebook::init();
+    MessageBox("SDKBOX!", "Enabled");
+    #endif
+
     
+    /*Working: Partilcles
+    ParticleSystemQuad *p = ParticleSystemQuad::create("particle_texture.plist");
+    p->setPosition(Point( _visibleSize.width / 2 + _origin.x, p->getContentSize().height/ 2 + _origin.y ));
+    p->setScale(0.5f);
+    Color4F startColor(255, 0.5f, 0.5f, 1.0f);
+    p->setStartColor(startColor);
     
+    Color4F startColorVar(255, 0.5f, 0.5f, 1.0f);
+    p->setStartColorVar(startColorVar);
     
+    Color4F endColor(255, 0.1f, 0.1f, 0.2f);
+    p->setEndColor(endColor);
+    
+    Color4F endColorVar(255, 0.1f, 0.1f, 0.2f);
+    p->setEndColorVar(endColorVar);
+    p->setBlendAdditive(true);
+    //p->setBlendFunc(BlendFunc::ADDITIVE);
+    this->addChild(p);
+     */
+    
+    auto button = cocos2d::ui::Button::create("buttonGreen.png", "buttonYellow.png", "buttonYellow.png");
+    
+    //button->setTitleText("Jugar");
+    button->setScale(_visibleSize.width / button->getContentSize().width * 0.5);
+    button->setPosition(Point( _visibleSize.width / 2 + _origin.x, _visibleSize.height / 2 + _origin.y ));
+    
+    //_label = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", "Jugar");
+    cocos2d::Label *buttonLabel = Label::createWithTTF("Compartir", "fonts/supercell.ttf", 17);
+    //Shadow effect
+    buttonLabel->enableOutline(Color4B(0,0,0,150), 1);
+    buttonLabel->enableShadow(Color4B(0,0,0,100),Size(0,-1),0);
+    buttonLabel->setPosition(Vec2(button->getContentSize().width / 2, button->getContentSize().height / 1.8));
+    //_label->setAnchorPoint(Vec2(0.5f, 0.5f));
+    
+    button->addChild(buttonLabel);
+    //addChild(button, 500);
+    
+    //auto button = cocos2d::ui::Button::create("Button.png", "ButtonYellow.png", "ButtonYellow.png");
+    
+    //button->setTitleText("Jugar");
+    //button->setScale(_visibleSize.width / button->getContentSize().width * 0.5);
+    //button->setPosition(Vec2(_origin.x + _visibleSize.width/2, _origin.y + _visibleSize.height/2 ));
+    
+    button->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type){
+        switch (type)
+        {
+            case ui::Widget::TouchEventType::BEGAN:
+                break;
+            case ui::Widget::TouchEventType::ENDED:
+                printf("Login to Facebook");
+                MessageBox("Login to Facebook!", "Alert");
+                sdkbox::PluginFacebook::login();
+                
+                
+                //auto myScene = HelloWorld::createScene();
+                //Director::getInstance()->replaceScene(myScene);
+                //Director::getInstance()->replaceScene(TransitionSlideInT::create(1, myScene) );
+                
+                
+                break;
+        }
+    });
+    
+    this->addChild(button, 6);
     
     
     
@@ -336,7 +406,8 @@ bool HelloWorld::init()
     
     return true;
 }
-                   
+
+
                    
 void HelloWorld::applyImpulse(float dt){
     if(isScreenBeingTouched == true){
@@ -730,3 +801,89 @@ void HelloWorld::updateTimer(float dt)
         
     }
 }
+
+
+/*********************
+ * Facebook callbacks
+ *********************/
+void HelloWorld::onLogin(bool isLogin, const std::string& error)
+{
+    MessageBox("Alert", "Facebook Login Call back!");
+    MessageBox("Error", error.c_str());
+    
+    CCLOG("##FB isLogin: %d, error: %s", isLogin, error.c_str());
+    
+    if (isLogin)
+    {
+        CCLOG("______________LOGGED IN______________");
+        sdkbox::FBAPIParam params;
+        sdkbox::PluginFacebook::api("me", "GET", params, "me");
+        
+    }
+    
+    std::string title = "login ";
+    title.append((isLogin ? "success" : "failed"));
+    //    MessageBox(error.c_str(), title.c_str());
+}
+
+
+void HelloWorld::onAPI(const std::string& tag, const std::string& jsonData)
+{
+    CCLOG("##FB onAPI: tag -> %s, json -> %s", tag.c_str(), jsonData.c_str());
+}
+
+void HelloWorld::onSharedSuccess(const std::string& message)
+{
+    CCLOG("##FB onSharedSuccess:%s", message.c_str());
+    
+    //    MessageBox(message.c_str(), "share success");
+}
+
+void HelloWorld::onSharedFailed(const std::string& message)
+{
+    CCLOG("##FB onSharedFailed:%s", message.c_str());
+    
+    //    MessageBox(message.c_str(), "share failed");
+}
+
+void HelloWorld::onSharedCancel()
+{
+    CCLOG("##FB onSharedCancel");
+    
+    //    MessageBox("", "share cancel");
+}
+
+void HelloWorld::onPermission(bool isLogin, const std::string& error)
+{
+    CCLOG("##FB onPermission: %d, error: %s", isLogin, error.c_str());
+    
+    std::string title = "permission ";
+    title.append((isLogin ? "success" : "failed"));
+    //    MessageBox(error.c_str(), title.c_str());
+}
+
+void HelloWorld::onFetchFriends(bool ok, const std::string& msg){}
+void HelloWorld::onRequestInvitableFriends( const sdkbox::FBInvitableFriendsInfo& friends ){}
+void HelloWorld::onInviteFriendsWithInviteIdsResult( bool result, const std::string& msg ){}
+void HelloWorld::onInviteFriendsResult( bool result, const std::string& msg ){}
+
+void HelloWorld::onGetUserInfo( const sdkbox::FBGraphUser& userInfo )
+{
+    CCLOG("Facebook id:'%s' name:'%s' last_name:'%s' first_name:'%s' email:'%s' installed:'%d'",
+          userInfo.getUserId().c_str(),
+          userInfo.getName().c_str(),
+          userInfo.getFirstName().c_str(),
+          userInfo.getLastName().c_str(),
+          userInfo.getEmail().c_str(),
+          userInfo.isInstalled ? 1 : 0
+          );
+    
+    MessageBox("User ID", userInfo.getUserId().c_str() );
+    MessageBox("User Name", userInfo.getName().c_str() );
+    MessageBox("User First Name", userInfo.getFirstName().c_str() );
+    MessageBox("User Last Name", userInfo.getLastName().c_str() );
+    MessageBox("User Email", userInfo.getEmail().c_str() );
+    
+}
+
+
