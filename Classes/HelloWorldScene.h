@@ -21,6 +21,7 @@ public:
     CREATE_FUNC(HelloWorld);
     
     void onHttpRequestCompleted( cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response );
+    void onRequestImgCompleted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response);
     
     void updateTimer(float dt);
     

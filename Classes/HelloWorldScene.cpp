@@ -14,10 +14,16 @@
 
 #include "PluginFacebook/PluginFacebook.h"
 
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+
+
 
 USING_NS_CC;
 
 using namespace std;
+using namespace rapidjson;
 
 int _i;
 Vec2 _origin;
@@ -37,6 +43,10 @@ bool isScreenBeingTouched = false;
 bool _isGameActive = false;
 
 EnemyAnimation *_enemy;
+
+cocos2d::Label* _userNameLabel;
+
+Sprite* _imageFrame;
 
 Scene* HelloWorld::createScene()
 {
@@ -129,6 +139,8 @@ bool HelloWorld::init()
     
     this->addChild(_bigCountDownLabel, 200);
     
+    
+    
     addBackground();
     addHUD();
     
@@ -144,9 +156,49 @@ bool HelloWorld::init()
     
     #ifdef SDKBOX_ENABLED
     sdkbox::PluginFacebook::init();
-    MessageBox("SDKBOX!", "Enabled");
+    //MessageBox("SDKBOX!", "Funcionando");
     #endif
 
+    //sdkbox::PluginFacebook::requestReadPermissions({sdkbox::FB_PERM_READ_PUBLIC_PROFILE, sdkbox::FB_PERM_READ_EMAIL, sdkbox::FB_PERM_READ_USER_FRIENDS});
+    //sdkbox::PluginFacebook::requestPublishPermissions({sdkbox::FB_PERM_PUBLISH_POST});
+
+    
+    
+    if (sdkbox::PluginFacebook::isLoggedIn())
+    {
+        CCLOG("______________LOGGED IN______________");
+        sdkbox::FBAPIParam params;
+        params["fields"] = "name,email,first_name,last_name,id";
+        sdkbox::PluginFacebook::api("me", "GET", params, "me");
+        
+        
+    }else{
+        sdkbox::PluginFacebook::login();
+    }
+    
+    
+    
+    
+    
+    
+    _imageFrame = Sprite::create("imageFrame.png");
+    
+    // position the sprite on the center of the screen
+    _imageFrame->setPosition(Vec2(_origin.x + _imageFrame->getContentSize().width / 2, _visibleSize.height + _origin.y - _imageFrame->getContentSize().height / 2));
+    //_imageFrame->setAnchorPoint(Vec2(0, 1));
+    // add the sprite as a child to this layer
+    this->addChild(_imageFrame, 100);
+    
+    //s.SetInt(s.GetInt() + 1);
+    
+    // 3. Stringify the DOM
+    //StringBuffer buffer;
+    //Writer<StringBuffer> writer(buffer);
+    //d.Accept(writer);
+    
+    // Output {"project":"rapidjson","stars":11}
+    //std::cout << buffer.GetString() << std::endl;
+    
     
     /*Working: Partilcles
     ParticleSystemQuad *p = ParticleSystemQuad::create("particle_texture.plist");
@@ -175,7 +227,7 @@ bool HelloWorld::init()
     button->setPosition(Point( _visibleSize.width / 2 + _origin.x, _visibleSize.height / 2 + _origin.y ));
     
     //_label = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", "Jugar");
-    cocos2d::Label *buttonLabel = Label::createWithTTF("Compartir", "fonts/supercell.ttf", 17);
+    cocos2d::Label *buttonLabel = Label::createWithTTF("Share", "fonts/supercell.ttf", 17);
     //Shadow effect
     buttonLabel->enableOutline(Color4B(0,0,0,150), 1);
     buttonLabel->enableShadow(Color4B(0,0,0,100),Size(0,-1),0);
@@ -211,7 +263,7 @@ bool HelloWorld::init()
         }
     });
     
-    this->addChild(button, 6);
+    //this->addChild(button, 6);
     
     
     
@@ -808,8 +860,8 @@ void HelloWorld::updateTimer(float dt)
  *********************/
 void HelloWorld::onLogin(bool isLogin, const std::string& error)
 {
-    MessageBox("Alert", "Facebook Login Call back!");
-    MessageBox("Error", error.c_str());
+    //MessageBox("Alert", "Facebook Login Call back!");
+    //MessageBox("Error", error.c_str());
     
     CCLOG("##FB isLogin: %d, error: %s", isLogin, error.c_str());
     
@@ -817,6 +869,7 @@ void HelloWorld::onLogin(bool isLogin, const std::string& error)
     {
         CCLOG("______________LOGGED IN______________");
         sdkbox::FBAPIParam params;
+        params["fields"] = "name,email,first_name,last_name";
         sdkbox::PluginFacebook::api("me", "GET", params, "me");
         
     }
@@ -830,6 +883,48 @@ void HelloWorld::onLogin(bool isLogin, const std::string& error)
 void HelloWorld::onAPI(const std::string& tag, const std::string& jsonData)
 {
     CCLOG("##FB onAPI: tag -> %s, json -> %s", tag.c_str(), jsonData.c_str());
+    //MessageBox(jsonData.c_str(), "Alert");
+    //const char* jsonbuf = "{\"name\":\"Marito Zepeda\",\"email\":\"bzmm5@hotmail.com\"}";
+    rapidjson::Document                 JSON;
+    //rapidjson::Value::MemberIterator    M;
+    //const char                          *key,*value;
+    
+    JSON.Parse<0>(jsonData.c_str());
+    
+    if (JSON.HasParseError())
+    {
+        CCLOG("Json has errors!!!");
+    }
+    
+    rapidjson::Value& idJSON = JSON["id"];
+    rapidjson::Value& firstNameJSON = JSON["first_name"];
+    rapidjson::Value& lastNameJSON = JSON["last_name"];
+    CCLOG("%s = %s", firstNameJSON.GetString(),lastNameJSON.GetString());
+    //MessageBox(stringJSON.GetString(), "Json");
+    
+    _userNameLabel = Label::createWithBMFont("fonts/clashOfClansFont-ipadhd.fnt", StringUtils::format("%s %s", firstNameJSON.GetString(), lastNameJSON.GetString()));
+    //_userNameLabel = cocos2d::Label::createWithTTF("Mario Zepeda", "fonts/supercell.ttf", 6);
+    //_userNameLabel->setColor(Color3B(255,224,144));
+    //_userNameLabel->enableOutline(Color4B(0,0,0,255), 1);
+    //_userNameLabel->enableShadow(Color4B(0,0,0,255),Size(0.5,-0.5),0);
+    
+    _userNameLabel->setAnchorPoint(Vec2(0, 0.5));
+    _userNameLabel->setScale(_visibleSize.width / _userNameLabel->getContentSize().width * 0.3);
+    _userNameLabel->setPosition(Vec2(_imageFrame->getPosition().x + _imageFrame->getContentSize().width/2, _imageFrame->getPosition().y));
+    addChild(_userNameLabel, 201);
+    //_userNameLabel->setString(StringUtils::format("%s %s", firstNameJSON.GetString(), lastNameJSON.GetString()));
+    //std::string url=StringUtils::format("https://graph.facebook.com/%s/picture?width=200&height=200",userInfo.getUserId().c_str());
+    
+    string _id = idJSON.GetString(); // id require to whome you want to fectch photo
+    cocos2d::network::HttpRequest* request = new (std::nothrow) cocos2d::network::HttpRequest();
+    string url = "https://graph.facebook.com/"+_id+"/picture?height=120&width=120";
+    request->setUrl(url.c_str());
+    request->setRequestType(cocos2d::network::HttpRequest::Type::GET);
+    request->setResponseCallback(CC_CALLBACK_2(HelloWorld::onRequestImgCompleted, this));
+    request->setTag("GetImage");
+    cocos2d::network::HttpClient::getInstance()->send(request);
+    request->release();
+    
 }
 
 void HelloWorld::onSharedSuccess(const std::string& message)
@@ -877,13 +972,56 @@ void HelloWorld::onGetUserInfo( const sdkbox::FBGraphUser& userInfo )
           userInfo.getEmail().c_str(),
           userInfo.isInstalled ? 1 : 0
           );
-    
+    /*
     MessageBox("User ID", userInfo.getUserId().c_str() );
     MessageBox("User Name", userInfo.getName().c_str() );
     MessageBox("User First Name", userInfo.getFirstName().c_str() );
     MessageBox("User Last Name", userInfo.getLastName().c_str() );
     MessageBox("User Email", userInfo.getEmail().c_str() );
+     */
     
+    //MessageBox("User First Name", userInfo.getFirstName().c_str() );
+
+    
+    
+    
+    
+}
+
+void HelloWorld::onRequestImgCompleted(cocos2d::network::HttpClient *sender, cocos2d::network::HttpResponse *response)
+{
+    
+    log("AppDelegate::onHttpRequestCompleted - onHttpRequestCompleted BEGIN");
+    if (!response)
+    {
+        log("onHttpRequestCompleted - No Response");
+        return;
+    }
+    
+    log("onHttpRequestCompleted - Response code: %lu", response->getResponseCode());
+    
+    if (!response->isSucceed())
+    {
+        log("onHttpRequestCompleted - Response failed");
+        log("onHttpRequestCompleted - Error buffer: %s", response->getErrorBuffer());
+        return;
+    }
+    log("onHttpRequestCompleted - Response code: %s", response->getResponseDataString());
+    
+    std::vector<char> *buffer = response->getResponseData();
+    
+    Image * image = new  Image ();
+    image-> initWithImageData ( reinterpret_cast<const unsigned char*>(&(buffer->front())), buffer->size());
+    Texture2D * texture = new  Texture2D ();
+    texture-> initWithImage (image);
+    Sprite* sp = Sprite::createWithTexture(texture);
+    sp->setScale(0.5);
+    //sp->setAnchorPoint(Vec2(0, 1));
+    addChild(sp, 250);
+    sp->setPosition(_imageFrame->getPosition());
+    //if(sp){
+    //_userNameLabel->setPosition(Vec2(sp->getPosition().x + sp->getContentSize().width, _visibleSize.height + _origin.y - _userNameLabel->getContentSize().height));
+    //}
 }
 
 
