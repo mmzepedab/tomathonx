@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "network/HttpClient.h"
-#include "PluginFacebook/PluginFacebook.h"
+#include <PluginFacebook/PluginFacebook.h>
 
 
 class HelloWorld : public cocos2d::LayerColor, sdkbox::FacebookListener

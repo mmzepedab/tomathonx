@@ -76,6 +76,7 @@
 		C0584AE7A115D412E41DC0F2 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642A4124BBB71B231CA12423 /* Bolts.framework */; };
 		C53041D293E4A7749869D313 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D5476DAE34B25E4C64DE24 /* AdSupport.framework */; };
 		D270501D1E025F8A00C37B2C /* imageFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = D270501C1E025F8A00C37B2C /* imageFrame.png */; };
+		D270501F1E0318AC00C37B2C /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = D270501E1E0318AC00C37B2C /* ground.png */; };
 		D2B727251DF6093A0096DDDD /* 11_leaf_head in Resources */ = {isa = PBXBuildFile; fileRef = D2B727241DF6093A0096DDDD /* 11_leaf_head */; };
 		D2B727281DF60B0A0096DDDD /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = D2B727271DF60B0A0096DDDD /* sounds */; };
 		D2B727331DF611200096DDDD /* 01_Pretty_Bird in Resources */ = {isa = PBXBuildFile; fileRef = D2B727291DF611200096DDDD /* 01_Pretty_Bird */; };
@@ -274,6 +275,7 @@
 		D270501A1E0249D800C37B2C /* stringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringbuffer.h; sourceTree = "<group>"; };
 		D270501B1E0249D800C37B2C /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		D270501C1E025F8A00C37B2C /* imageFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFrame.png; sourceTree = "<group>"; };
+		D270501E1E0318AC00C37B2C /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		D2B727241DF6093A0096DDDD /* 11_leaf_head */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 11_leaf_head; sourceTree = "<group>"; };
 		D2B727271DF60B0A0096DDDD /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		D2B727291DF611200096DDDD /* 01_Pretty_Bird */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 01_Pretty_Bird; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 			children = (
 				FE1159E21E006348006C0CEC /* particle_texture.plist */,
 				D270501C1E025F8A00C37B2C /* imageFrame.png */,
+				D270501E1E0318AC00C37B2C /* ground.png */,
 				FEA9266B1DFF4A4D002B5D81 /* gameOverBg.png */,
 				D2BE38171DFD06B00081D555 /* Buttons */,
 				D2B727411DF8FE730096DDDD /* timerBG.png */,
@@ -753,6 +756,7 @@
 				D2BE381D1DFD1C690081D555 /* buttonYellow.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				D270501D1E025F8A00C37B2C /* imageFrame.png in Resources */,
+				D270501F1E0318AC00C37B2C /* ground.png in Resources */,
 				D2B727361DF611200096DDDD /* 04_angry_egg in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				D2B727341DF611200096DDDD /* 02_green_cat in Resources */,
@@ -893,6 +897,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
@@ -943,6 +948,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;

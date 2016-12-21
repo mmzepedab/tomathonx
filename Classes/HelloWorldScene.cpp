@@ -12,6 +12,7 @@
 #include "Enemy.h"
 #include "EnemyAnimation.hpp"
 
+#include <sdkbox/sdkbox.h>
 #include "PluginFacebook/PluginFacebook.h"
 
 #include "rapidjson/document.h"
@@ -490,6 +491,23 @@ void HelloWorld::addBackground(){
     
     //sprite1->setScale(0.20);
     addChild(backgroundSprite, -1000);
+    
+    
+    //Add Ground auto backgroundSprite = Sprite::create("uncolored_castle.png");
+    auto groundSprite = Sprite::create("ground.png");
+    groundSprite->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y));
+    auto physicsBody = PhysicsBody::createBox(Size(groundSprite->getContentSize().width, groundSprite->getContentSize().height - 20));
+    
+    //physicsBody->applyImpulse(Vect( cocos2d::random(-300,300), cocos2d::random(600,1000) ));
+    physicsBody->setGravityEnable(false);
+    physicsBody->setDynamic(false);
+    //physicsBody->setTag(1);
+    groundSprite->setPhysicsBody(physicsBody);
+    addChild(groundSprite);
+    
+    
+    
+    addChild(groundSprite, -1000);
 }
 
 void HelloWorld::addHUD(){
